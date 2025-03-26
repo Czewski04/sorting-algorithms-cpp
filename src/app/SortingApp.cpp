@@ -6,8 +6,7 @@
 #include <fstream>
 
 
-
-void SortingApp::runApp() {
+[[noreturn]] void SortingApp::runApp() {
     long long sortingTime = 0;
     while(true) {
         showMenu();
@@ -17,7 +16,20 @@ void SortingApp::runApp() {
                 FileReader::readFile(unsortedList);
                 break;
             case 2:
-                NumbersGenerator::generateNumbers(unsortedList);
+                showGenerationMenu();
+                getUserChoice();
+                switch (userChoice) {
+                    case 1:
+                        NumbersGenerator::generateNumbers(unsortedList, 0);
+                        break;
+                    case 2:
+                        NumbersGenerator::generateNumbers(unsortedList, 33);
+                        break;
+                    case 3:
+                        NumbersGenerator::generateNumbers(unsortedList, 66);
+                        break;
+                    default: ;
+                }
                 break;
             case 3:
                 showUnsortedTable();
@@ -35,11 +47,39 @@ void SortingApp::runApp() {
                         showUnsortedTable();
                         showSortedTable();
                         std::cout <<"\nSorting time: "<< sortingTime <<"ms\n";
+                        break;
+                    case 2:
+                        showQuickSortMenu();
+                        getUserChoice();
+                        switch (userChoice) {
+                            case 1:
+                                sortingTime = SortingMachine::quickSort(sortedList,1);
+                                break;
+                            case 2:
+                                sortingTime = SortingMachine::quickSort(sortedList,2);
+                                break;
+                            case 3:
+                                sortingTime = SortingMachine::quickSort(sortedList,3);
+                                break;
+                            case 4:
+                                sortingTime = SortingMachine::quickSort(sortedList,4);
+                                break;
+                            default:;
+                        }
+                        showUnsortedTable();
+                        showSortedTable();
+                        std::cout <<"\nSorting time: "<< sortingTime <<"ms\n";
+                        break;
+                    case 3:
+                        break;
+                    case 4:
+                        break;
+                    case 0:
+                        break;
+                    default: ;
                 }
                 break;
             case 6:
-                break;
-            case 7:
                 SortingMachine::checkSorting(sortedList);
                 break;
             default: ;
@@ -53,12 +93,11 @@ void SortingApp::getUserChoice() {
 
 void SortingApp::showMenu() {
     cout<<"1. Read file.\n"<<
-        "2. Generate numbers.\n"
+        "2. Generating numbers menu.\n"
         "3. Show actually using unsorted table.\n"
         "4. Show sorted table.\n"
         "5. Sorting menu.\n"
-        "6. Presorting settings\n"
-        "7. Check sorting\n";
+        "6. Check sorting\n";
 }
 
 void SortingApp::showSortingMenu() {
@@ -68,6 +107,23 @@ void SortingApp::showSortingMenu() {
         "4. Shell sort.\n"
         "0. Exit\n";
 }
+
+void SortingApp::showGenerationMenu() {
+    cout<<"1. 0% array is sorted.\n"<<
+        "2. 33% array is sorted.\n"
+        "3. 66% array is sorted.\n"
+        "0. Exit\n";
+}
+
+void SortingApp::showQuickSortMenu() {
+    cout<<"1. Pivot on the left.\n"<<
+        "2. Pivot on the right.\n"
+        "3. Pivot in the middle.\n"
+        "4. Random pivot place\n"
+        "0. Exit\n";
+}
+
+
 
 void SortingApp::showUnsortedTable() const {
     if (unsortedList.size() == 0)

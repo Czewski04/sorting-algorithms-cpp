@@ -5,7 +5,7 @@
 
 class NumbersGenerator {
 public:
-    static void generateNumbers(std::vector <int>& unsortedList);
+    static void generateNumbers(std::vector <int>& unsortedList, int presortedPercentage);
     static int askForArraySize();
 };
 

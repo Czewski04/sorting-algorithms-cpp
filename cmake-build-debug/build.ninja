@@ -94,6 +94,7 @@ build CMakeFiles/sortingAlgorithms.dir/src/app/Main.cpp.obj: CXX_COMPILER__sorti
 
 build sortingAlgorithms.exe: CXX_EXECUTABLE_LINKER__sortingAlgorithms_Debug CMakeFiles/sortingAlgorithms.dir/src/algorithms/SortingMachine.cpp.obj CMakeFiles/sortingAlgorithms.dir/src/io/NumbersGenerator.cpp.obj CMakeFiles/sortingAlgorithms.dir/src/io/FileReader.cpp.obj CMakeFiles/sortingAlgorithms.dir/src/app/SortingApp.cpp.obj CMakeFiles/sortingAlgorithms.dir/src/app/Main.cpp.obj
   FLAGS = -g
+  LINK_FLAGS = -Wl,--stack,536870912
   LINK_LIBRARIES = -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   OBJECT_DIR = CMakeFiles\sortingAlgorithms.dir
   POST_BUILD = cd .

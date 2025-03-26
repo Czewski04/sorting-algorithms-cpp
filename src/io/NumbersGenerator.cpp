@@ -5,17 +5,26 @@
 
 using namespace std;
 
-void NumbersGenerator::generateNumbers(std::vector <int>& unsortedList){
+void NumbersGenerator::generateNumbers(std::vector <int>& unsortedList, int presortedPercentage){
     unsortedList.clear();
     int arraySize = askForArraySize();
+    int sortedIndex = ((float)presortedPercentage/100.0f)*arraySize;
+
     random_device rd;
     mt19937 generator(rd());
-    uniform_int_distribution<int> distribution(1, arraySize);
-    for(int i = 0; i < arraySize; i++){
+    uniform_int_distribution<int> distribution(sortedIndex, arraySize);
+
+    if (sortedIndex>0) {
+        for (int i=0; i<sortedIndex; i++) {
+            unsortedList.push_back(i);
+        }
+    }
+
+    for(int i = sortedIndex; i < arraySize; i++){
       unsortedList.push_back(distribution(generator));
     }
 
-    cout << "All numbers ("<<arraySize<<") generated successfully.\n \n";
+    cout << "All numbers ("<<unsortedList.size()<<") generated successfully.\n \n";
 }
 
 int NumbersGenerator::askForArraySize(){

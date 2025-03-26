@@ -4,7 +4,7 @@
 
 class SortingApp {
 public:
-    void runApp();
+    [[noreturn]] void runApp();
     void getUserChoice();
     void showUnsortedTable() const;
     void showSortedTable() const;
@@ -12,6 +12,8 @@ public:
 
     static void showMenu();
     static void showSortingMenu();
+    static void showGenerationMenu();
+    static void showQuickSortMenu();
 private:
     int userChoice = 0;
     std::vector<int> unsortedList;
