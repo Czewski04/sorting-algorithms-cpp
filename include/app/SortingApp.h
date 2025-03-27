@@ -5,6 +5,13 @@
 class SortingApp {
 public:
     [[noreturn]] void runApp();
+
+private:
+    int userChoice = 0;
+    long long lastSortingTime = 0;
+    std::vector<int> unsortedList;
+    std::vector<int> sortedList;
+
     void getUserChoice();
     void showUnsortedTable() const;
     void showSortedTable() const;
@@ -14,10 +21,6 @@ public:
     static void showSortingMenu();
     static void showGenerationMenu();
     static void showQuickSortMenu();
-private:
-    int userChoice = 0;
-    std::vector<int> unsortedList;
-    std::vector<int> sortedList;
 };
 
 #endif //SORTINGAPP_H

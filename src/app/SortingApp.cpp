@@ -7,7 +7,6 @@
 
 
 [[noreturn]] void SortingApp::runApp() {
-    long long sortingTime = 0;
     while(true) {
         showMenu();
         getUserChoice();
@@ -28,6 +27,9 @@
                     case 3:
                         NumbersGenerator::generateNumbers(unsortedList, 66);
                         break;
+                    case 4:
+                        NumbersGenerator::generateNumbers(unsortedList, 100);
+                        break;
                     default: ;
                 }
                 break;
@@ -43,32 +45,31 @@
                 getUserChoice();
                 switch (userChoice) {
                     case 1:
-                        sortingTime = SortingMachine::insertionSort(sortedList);
+                        lastSortingTime = SortingMachine::insertionSort(sortedList);
                         showUnsortedTable();
                         showSortedTable();
-                        std::cout <<"\nSorting time: "<< sortingTime <<"ms\n";
+                        std::cout <<"\nSorting time: "<< lastSortingTime <<"ms\n";
                         break;
                     case 2:
                         showQuickSortMenu();
                         getUserChoice();
                         switch (userChoice) {
                             case 1:
-                                sortingTime = SortingMachine::quickSort(sortedList,1);
+                                lastSortingTime = SortingMachine::quickSort(sortedList,1);
                                 break;
                             case 2:
-                                sortingTime = SortingMachine::quickSort(sortedList,2);
+                                lastSortingTime = SortingMachine::quickSort(sortedList,2);
                                 break;
                             case 3:
-                                sortingTime = SortingMachine::quickSort(sortedList,3);
+                                lastSortingTime = SortingMachine::quickSort(sortedList,3);
                                 break;
                             case 4:
-                                sortingTime = SortingMachine::quickSort(sortedList,4);
+                                lastSortingTime = SortingMachine::quickSort(sortedList,4);
                                 break;
                             default:;
                         }
                         showUnsortedTable();
                         showSortedTable();
-                        std::cout <<"\nSorting time: "<< sortingTime <<"ms\n";
                         break;
                     case 3:
                         break;
@@ -112,6 +113,7 @@ void SortingApp::showGenerationMenu() {
     cout<<"1. 0% array is sorted.\n"<<
         "2. 33% array is sorted.\n"
         "3. 66% array is sorted.\n"
+        "4. Array sorted descending\n"
         "0. Exit\n";
 }
 
@@ -144,6 +146,7 @@ void SortingApp::showSortedTable() const {
     for(int i = 0; i < sortedList.size(); i++) {
         cout << sortedList[i] << "\n";
     }
+    cout <<"\nLast sorting time: "<< lastSortingTime <<"ms\n";
     cout<<"\n";
 }
 

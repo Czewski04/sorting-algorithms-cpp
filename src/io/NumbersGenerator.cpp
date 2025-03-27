@@ -8,6 +8,15 @@ using namespace std;
 void NumbersGenerator::generateNumbers(std::vector <int>& unsortedList, int presortedPercentage){
     unsortedList.clear();
     int arraySize = askForArraySize();
+
+    if (presortedPercentage == 100) {
+        for (int i=arraySize; i >= 1; i--) {
+            unsortedList.push_back(i);
+        }
+        cout << "All numbers ("<<unsortedList.size()<<") generated successfully.\n \n";
+        return;
+    }
+
     int sortedIndex = ((float)presortedPercentage/100.0f)*arraySize;
 
     random_device rd;
