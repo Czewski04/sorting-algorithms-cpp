@@ -12,7 +12,7 @@ long long SortingMachine::insertionSort(T*& sortedList, int arraySize) {
     auto start = std::chrono::high_resolution_clock::now();
 
     for (int i = 1; i <arraySize; i++) {
-        int key = sortedList[i];
+        T key = sortedList[i];
         j=i-1;
         while (j>=0 && key < sortedList[j]) {
             sortedList[j+1] = sortedList[j];
@@ -62,7 +62,7 @@ void SortingMachine::checkSorting(T*& sortedList, int arraySize) {
 template<typename T>
 void SortingMachine::quickSortImplementation(T *&sortedList, int begin, int end, int pivotPosition) {
     if (begin >= end) return;
-    int pivot=0;
+    T pivot=0;
     if (pivotPosition==1) {
         pivot = sortedList[begin];
         std::swap(sortedList[begin], sortedList[end]);
