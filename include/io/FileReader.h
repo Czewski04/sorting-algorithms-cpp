@@ -9,7 +9,10 @@ using namespace std;
 class FileReader {
 public:
   static string askForFilename();
-  static void readFile(std::vector <int>& unsortedList);
+
+  template<typename T>
+  static void readFile(T*& unsortedList, int& arraySize);
 };
 
+#include "FileReader.tpp"
 #endif //FILEREADER_H

@@ -13,8 +13,5 @@ include_directories(
 
 add_executable(sortingAlgorithms
         src/algorithms/SortingMachine.cpp
-        src/io/NumbersGenerator.cpp
-        src/io/FileReader.cpp
-        src/app/SortingApp.cpp
         src/App/Main.cpp
 )

@@ -2,6 +2,7 @@
 #define SORTINGAPP_H
 #include <vector>
 
+template<typename T>
 class SortingApp {
 public:
     [[noreturn]] void runApp();
@@ -9,8 +10,9 @@ public:
 private:
     int userChoice = 0;
     long long lastSortingTime = 0;
-    std::vector<int> unsortedList;
-    std::vector<int> sortedList;
+    T* unsortedList;
+    T* sortedList;
+    int listSize=0;
 
     void getUserChoice();
     void showUnsortedTable() const;
@@ -23,4 +25,5 @@ private:
     static void showQuickSortMenu();
 };
 
+#include "SortingApp.tpp"
 #endif //SORTINGAPP_H
