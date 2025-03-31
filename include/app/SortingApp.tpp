@@ -153,6 +153,7 @@ void SortingApp<T>::showSortedTable() const {
     }
     cout <<"\nLast sorting time: "<< lastSortingTime <<"ms\n";
     cout<<"\n";
+
 }
 
 template <typename T>   //kopiowanie tablicy nieposortowanej

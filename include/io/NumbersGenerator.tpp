@@ -87,5 +87,6 @@ void NumbersGenerator::generateFloatNumbers(T *&unsortedList, int presortedPerce
     for(int i = sortedIndex; i < arraySize; i++){
         unsortedList[i]=distribution(generator);
     }
+
 }
 
