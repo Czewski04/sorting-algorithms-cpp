@@ -4,7 +4,7 @@
 #include <vector>
 #include <filesystem>
 
-template <typename T>
+template <typename T>   //funkcja wczytująca plik danych
 void FileReader::readFile(T*& unsortedList, int& arraySize) {
     delete[] unsortedList;
     ifstream file(askForFilename());
@@ -33,7 +33,7 @@ void FileReader::readFile(T*& unsortedList, int& arraySize) {
     cout << "All numbers ("<<arraySize <<") added successfully.\n \n";
 }
 
-string FileReader::askForFilename() {
+string FileReader::askForFilename() {   //funkcja wczytująca ścierzkę do pliku
     cout << "Please enter the file name: \n";
     string fileName;
     cin >> fileName;

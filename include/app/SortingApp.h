@@ -4,14 +4,13 @@
 
 template<typename T>
 class SortingApp {
-public:
+public:             //utworzenie struktury aplikacji
     [[noreturn]] void runApp();
-
 private:
     int userChoice = 0;
     long long lastSortingTime = 0;
-    T* unsortedList;
-    T* sortedList;
+    T*unsortedList = nullptr;
+    T*sortedList = nullptr;
     int listSize=0;
 
     void getUserChoice();

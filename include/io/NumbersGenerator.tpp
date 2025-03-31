@@ -2,17 +2,18 @@
 #include <iostream>
 #include <vector>
 #include <random>
+#include <ranges>
 
 using namespace std;
 
-int NumbersGenerator::askForArraySize(){
+int NumbersGenerator::askForArraySize(){        //wczytywanie rozmiaru tablicy od użytkownika
     int arraySize = 0;
     cout << "Enter number of elements to sort:\n";
     cin >> arraySize;
     return arraySize;
 }
 
-template <typename T>
+template <typename T>       //funkcja sterująca generowaniem liczb
 void NumbersGenerator::generateNumbers(T*& unsortedList, int presortedPercentage, int& arraySize){
     delete[] unsortedList;
     arraySize = askForArraySize();
@@ -87,3 +88,4 @@ void NumbersGenerator::generateFloatNumbers(T *&unsortedList, int presortedPerce
         unsortedList[i]=distribution(generator);
     }
 }
+

@@ -12,6 +12,5 @@ include_directories(
 )
 
 add_executable(sortingAlgorithms
-        src/algorithms/SortingMachine.cpp
         src/App/Main.cpp
 )

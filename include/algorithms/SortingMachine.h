@@ -5,6 +5,7 @@
 
 class SortingMachine {
 public:
+    //dekalracja funkcji sortujących
     template<typename T>
     static long long quickSort(T*& sortedList, int pivotPosition, int arraySize);
     template<typename T>

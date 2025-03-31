@@ -7,7 +7,7 @@
 using namespace std;
 
 class FileReader {
-public:
+public:   //struktura klasy wczytującej plik
   static string askForFilename();
 
   template<typename T>

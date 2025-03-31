@@ -6,7 +6,7 @@
 #include <utility>
 #include <random>
 
-template<typename T>
+template<typename T> //implementacja algorytmu sortowania przez wstawiania
 long long SortingMachine::insertionSort(T*& sortedList, int arraySize) {
     int j=0;
     auto start = std::chrono::high_resolution_clock::now();
@@ -27,7 +27,7 @@ long long SortingMachine::insertionSort(T*& sortedList, int arraySize) {
     return duration.count();
 }
 
-template<typename T>
+template<typename T> //funkcja sterująca sortowaniem szybkim
 long long SortingMachine::quickSort(T*& sortedList, int pivotPosition, int arraySize) {
     auto start = std::chrono::high_resolution_clock::now();
 
@@ -39,7 +39,7 @@ long long SortingMachine::quickSort(T*& sortedList, int pivotPosition, int array
     return duration.count();
 }
 
-template<typename T>
+template<typename T> //funkcja testująca poprawność sortowania
 void SortingMachine::checkSorting(T*& sortedList, int arraySize) {
     bool isSorted = true;
     if (arraySize == 0) {
@@ -59,10 +59,10 @@ void SortingMachine::checkSorting(T*& sortedList, int arraySize) {
     std::cout<<"\n";
 }
 
-template<typename T>
+template<typename T> //implementacja algorytmu sortowania szybkiego
 void SortingMachine::quickSortImplementation(T *&sortedList, int begin, int end, int pivotPosition) {
     if (begin >= end) return;
-    T pivot=0;
+    T pivot=0;              //wybór pivota
     if (pivotPosition==1) {
         pivot = sortedList[begin];
         std::swap(sortedList[begin], sortedList[end]);
@@ -75,10 +75,8 @@ void SortingMachine::quickSortImplementation(T *&sortedList, int begin, int end,
         std::swap(sortedList[((end-begin)/2)+begin], sortedList[end]);
     }
     else if (pivotPosition==4) {
-        std::random_device rd;
-        std::mt19937 generator(rd());
-        std::uniform_int_distribution<int> distribution(begin, end);
-        int pivotIndex = distribution(generator);
+        std::srand(std::time(nullptr));
+        int pivotIndex = begin + std::rand() % (end - begin + 1);
         pivot = sortedList[pivotIndex];
         std::swap(sortedList[pivotIndex], sortedList[end]);
     }

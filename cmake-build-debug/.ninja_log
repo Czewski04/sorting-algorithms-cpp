@@ -1,14 +1,8 @@
 # ninja log v6
-3	268	7647157008572491	build.ninja	2f3c7a7358c81747
+3	268	7650761649392226	build.ninja	2f3c7a7358c81747
 20	151	7647033125642645	sortingAlgorithms.exe	bc655e8d8b70ae97
-25	669	7644555117598725	CMakeFiles/sortingAlgorithms.dir/main.cpp.obj	153e913d7677cd95
-10	667	7644477233059196	CMakeFiles/sortingAlgorithms.dir/sortingApp.cpp.obj	6bf7503fb168647
-17	1029	7644555117513003	CMakeFiles/sortingAlgorithms.dir/FileReader.cpp.obj	ac76b88269a9073
-12	994	7644555117462808	CMakeFiles/sortingAlgorithms.dir/NumbersGenerator.cpp.obj	e6a5290990b85395
-5	647	7644602985546249	CMakeFiles/sortingAlgorithms.dir/SortingApp.cpp.obj	81637e5b35f873c4
-5	1226	7644601237796078	CMakeFiles/sortingAlgorithms.dir/SortingMachine.cpp.obj	eba34efaff044ea9
 19	330	7646516051538809	CMakeFiles/sortingAlgorithms.dir/src/app/Main.cpp.obj	bb791491e6233ef1
-13	674	7646516920868579	CMakeFiles/sortingAlgorithms.dir/src/app/SortingApp.cpp.obj	9b6457509fa2e6c9
-13	847	7646513409156564	CMakeFiles/sortingAlgorithms.dir/src/io/NumbersGenerator.cpp.obj	ed4f6e82db0bd11d
-10	1052	7644627212292304	CMakeFiles/sortingAlgorithms.dir/src/io/FileReader.cpp.obj	f2031ca19d45783
-21	1469	7646501320774786	CMakeFiles/sortingAlgorithms.dir/src/algorithms/SortingMachine.cpp.obj	c29012fd805dbdab
+25	1901	7650761667274372	CMakeFiles/sortingAlgorithms.dir/src/app/Main.cpp.obj	bb791491e6233ef1
+1902	2088	7650761686045886	sortingAlgorithms.exe	908325276ebcaf2d
+51	2478	7651559053880751	CMakeFiles/sortingAlgorithms.dir/src/app/Main.cpp.obj	bb791491e6233ef1
+2478	2769	7651559078142406	sortingAlgorithms.exe	908325276ebcaf2d

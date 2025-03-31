@@ -49,34 +49,6 @@ cmake_ninja_workdir = C$:/Users/wikto/CLionProjects/sortingAlgorithms/cmake-buil
 
 build cmake_object_order_depends_target_sortingAlgorithms: phony || .
 
-build CMakeFiles/sortingAlgorithms.dir/src/algorithms/SortingMachine.cpp.obj: CXX_COMPILER__sortingAlgorithms_unscanned_Debug C$:/Users/wikto/CLionProjects/sortingAlgorithms/src/algorithms/SortingMachine.cpp || cmake_object_order_depends_target_sortingAlgorithms
-  DEP_FILE = CMakeFiles\sortingAlgorithms.dir\src\algorithms\SortingMachine.cpp.obj.d
-  FLAGS = -g -std=gnu++20 -fdiagnostics-color=always
-  INCLUDES = -IC:/Users/wikto/CLionProjects/sortingAlgorithms/include/algorithms -IC:/Users/wikto/CLionProjects/sortingAlgorithms/include/io -IC:/Users/wikto/CLionProjects/sortingAlgorithms/include/app
-  OBJECT_DIR = CMakeFiles\sortingAlgorithms.dir
-  OBJECT_FILE_DIR = CMakeFiles\sortingAlgorithms.dir\src\algorithms
-
-build CMakeFiles/sortingAlgorithms.dir/src/io/NumbersGenerator.cpp.obj: CXX_COMPILER__sortingAlgorithms_unscanned_Debug C$:/Users/wikto/CLionProjects/sortingAlgorithms/src/io/NumbersGenerator.cpp || cmake_object_order_depends_target_sortingAlgorithms
-  DEP_FILE = CMakeFiles\sortingAlgorithms.dir\src\io\NumbersGenerator.cpp.obj.d
-  FLAGS = -g -std=gnu++20 -fdiagnostics-color=always
-  INCLUDES = -IC:/Users/wikto/CLionProjects/sortingAlgorithms/include/algorithms -IC:/Users/wikto/CLionProjects/sortingAlgorithms/include/io -IC:/Users/wikto/CLionProjects/sortingAlgorithms/include/app
-  OBJECT_DIR = CMakeFiles\sortingAlgorithms.dir
-  OBJECT_FILE_DIR = CMakeFiles\sortingAlgorithms.dir\src\io
-
-build CMakeFiles/sortingAlgorithms.dir/src/io/FileReader.cpp.obj: CXX_COMPILER__sortingAlgorithms_unscanned_Debug C$:/Users/wikto/CLionProjects/sortingAlgorithms/src/io/FileReader.cpp || cmake_object_order_depends_target_sortingAlgorithms
-  DEP_FILE = CMakeFiles\sortingAlgorithms.dir\src\io\FileReader.cpp.obj.d
-  FLAGS = -g -std=gnu++20 -fdiagnostics-color=always
-  INCLUDES = -IC:/Users/wikto/CLionProjects/sortingAlgorithms/include/algorithms -IC:/Users/wikto/CLionProjects/sortingAlgorithms/include/io -IC:/Users/wikto/CLionProjects/sortingAlgorithms/include/app
-  OBJECT_DIR = CMakeFiles\sortingAlgorithms.dir
-  OBJECT_FILE_DIR = CMakeFiles\sortingAlgorithms.dir\src\io
-
-build CMakeFiles/sortingAlgorithms.dir/src/app/SortingApp.cpp.obj: CXX_COMPILER__sortingAlgorithms_unscanned_Debug C$:/Users/wikto/CLionProjects/sortingAlgorithms/src/app/SortingApp.cpp || cmake_object_order_depends_target_sortingAlgorithms
-  DEP_FILE = CMakeFiles\sortingAlgorithms.dir\src\app\SortingApp.cpp.obj.d
-  FLAGS = -g -std=gnu++20 -fdiagnostics-color=always
-  INCLUDES = -IC:/Users/wikto/CLionProjects/sortingAlgorithms/include/algorithms -IC:/Users/wikto/CLionProjects/sortingAlgorithms/include/io -IC:/Users/wikto/CLionProjects/sortingAlgorithms/include/app
-  OBJECT_DIR = CMakeFiles\sortingAlgorithms.dir
-  OBJECT_FILE_DIR = CMakeFiles\sortingAlgorithms.dir\src\app
-
 build CMakeFiles/sortingAlgorithms.dir/src/app/Main.cpp.obj: CXX_COMPILER__sortingAlgorithms_unscanned_Debug C$:/Users/wikto/CLionProjects/sortingAlgorithms/src/app/Main.cpp || cmake_object_order_depends_target_sortingAlgorithms
   DEP_FILE = CMakeFiles\sortingAlgorithms.dir\src\app\Main.cpp.obj.d
   FLAGS = -g -std=gnu++20 -fdiagnostics-color=always
@@ -92,7 +64,7 @@ build CMakeFiles/sortingAlgorithms.dir/src/app/Main.cpp.obj: CXX_COMPILER__sorti
 #############################################
 # Link the executable sortingAlgorithms.exe
 
-build sortingAlgorithms.exe: CXX_EXECUTABLE_LINKER__sortingAlgorithms_Debug CMakeFiles/sortingAlgorithms.dir/src/algorithms/SortingMachine.cpp.obj CMakeFiles/sortingAlgorithms.dir/src/io/NumbersGenerator.cpp.obj CMakeFiles/sortingAlgorithms.dir/src/io/FileReader.cpp.obj CMakeFiles/sortingAlgorithms.dir/src/app/SortingApp.cpp.obj CMakeFiles/sortingAlgorithms.dir/src/app/Main.cpp.obj
+build sortingAlgorithms.exe: CXX_EXECUTABLE_LINKER__sortingAlgorithms_Debug CMakeFiles/sortingAlgorithms.dir/src/app/Main.cpp.obj
   FLAGS = -g
   LINK_FLAGS = -Wl,--stack,536870912
   LINK_LIBRARIES = -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32

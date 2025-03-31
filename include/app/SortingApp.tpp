@@ -5,7 +5,7 @@
 #include <iostream>
 #include <algorithm>
 
-template <typename T>
+template <typename T>   //funckja zarządzająca menu aplikacji
 [[noreturn]] void SortingApp<T>::runApp() {
     while(true) {
         showMenu();
@@ -88,12 +88,12 @@ template <typename T>
     }
 }
 
-template <typename T>
+template <typename T>   //funkcja pobierająca wybór użytkownika
 void SortingApp<T>::getUserChoice() {
     std::cin>>userChoice;
 }
 
-template <typename T>
+template <typename T>   //wyświetlenie menu głównego
 void SortingApp<T>::showMenu() {
     cout<<"1. Read file.\n"<<
         "2. Generating numbers menu.\n"
@@ -103,7 +103,7 @@ void SortingApp<T>::showMenu() {
         "6. Check sorting\n";
 }
 
-template <typename T>
+template <typename T>   //wyświetlenie menu sortowania
 void SortingApp<T>::showSortingMenu() {
     cout<<"1. Insertion sort.\n"<<
         "2. Quick sort.\n"
@@ -112,7 +112,7 @@ void SortingApp<T>::showSortingMenu() {
         "0. Exit\n";
 }
 
-template <typename T>
+template <typename T>   //wyświetlenie menu generowania liczb
 void SortingApp<T>::showGenerationMenu() {
     cout<<"1. 0% array is sorted.\n"<<
         "2. 33% array is sorted.\n"
@@ -121,7 +121,7 @@ void SortingApp<T>::showGenerationMenu() {
         "0. Exit\n";
 }
 
-template <typename T>
+template <typename T>   //wyświetlenie menu quicksorta
 void SortingApp<T>::showQuickSortMenu() {
     cout<<"1. Pivot on the left.\n"<<
         "2. Pivot on the right.\n"
@@ -130,7 +130,7 @@ void SortingApp<T>::showQuickSortMenu() {
         "0. Exit\n";
 }
 
-template <typename T>
+template <typename T>   //wyświetlenie nieposortowanej tablicy
 void SortingApp<T>::showUnsortedTable() const {
     if (listSize == 0)
         cout<<"Unsorted table is empty."<<endl;
@@ -142,7 +142,7 @@ void SortingApp<T>::showUnsortedTable() const {
     cout<<"\n";
 }
 
-template <typename T>
+template <typename T>   //wyświetlenie posortowanej tablicy
 void SortingApp<T>::showSortedTable() const {
     if (listSize == 0)
         cout<<"Sorted table is empty."<<endl;
@@ -155,7 +155,7 @@ void SortingApp<T>::showSortedTable() const {
     cout<<"\n";
 }
 
-template <typename T>
+template <typename T>   //kopiowanie tablicy nieposortowanej
 void SortingApp<T>::copyUnsortedToSorted() {
     delete[] sortedList;
     sortedList = new T[listSize];

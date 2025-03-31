@@ -4,7 +4,7 @@
 #include <vector>
 
 class NumbersGenerator {
-public:
+public:     // struktura klasy generującej dane
     template<typename T>
     static void generateNumbers(T*& unsortedList, int presortedPercentage, int& arraySize);
 

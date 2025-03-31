@@ -4,7 +4,7 @@ int main() {
     int choice;
     SortingApp<int>* appInt = nullptr;
     SortingApp<float>* appFloat = nullptr;
-    std::cout<<"Choose data type:\n"
+    std::cout<<"Choose data type:\n"       //wybór sorotwanych danych
                "1. int\n"
                "2. float\n";
     std::cin>>choice;
@@ -12,7 +12,7 @@ int main() {
         appInt = new SortingApp<int>();
         appInt->runApp();
     }
-    else if(choice==2) {
+    if(choice==2) {
         appFloat = new SortingApp<float>();
         appFloat->runApp();
     }
