@@ -4,10 +4,9 @@
 #include <vector>
 #include <iostream>
 #include <utility>
-#include <random>
 
 template<typename T> //implementacja algorytmu sortowania przez wstawiania
-long long SortingMachine::insertionSort(T* sortedList, int arraySize) {
+double SortingMachine::insertionSort(T* sortedList, int arraySize) {
     int j=0;
     auto start = std::chrono::high_resolution_clock::now();
 
@@ -22,19 +21,19 @@ long long SortingMachine::insertionSort(T* sortedList, int arraySize) {
     }
 
     auto end = std::chrono::high_resolution_clock::now();
-    auto duration = std::chrono::duration_cast<std::chrono::milliseconds>(end - start);
+    auto duration = std::chrono::duration<double, std::milli>(end - start);
 
     return duration.count();
 }
 
 template<typename T> //funkcja sterująca sortowaniem szybkim
-long long SortingMachine::quickSort(T* sortedList, int pivotPosition, int arraySize) {
+double SortingMachine::quickSort(T* sortedList, int pivotPosition, int arraySize) {
     auto start = std::chrono::high_resolution_clock::now();
 
     quickSortImplementation(sortedList, 0, arraySize-1, pivotPosition);
 
     auto end = std::chrono::high_resolution_clock::now();
-    auto duration = std::chrono::duration_cast<std::chrono::milliseconds>(end - start);
+    auto duration = std::chrono::duration<double, std::milli>(end - start);
 
     return duration.count();
 }

@@ -77,13 +77,16 @@ template <typename T>   //funckja zarządzająca menu aplikacji
                 if(presentationAfterSorting){
                     showUnsortedTable();
                     showSortedTable();
-                    SortingMachine::checkSorting(sortedList, sortedListSize);
                 }
+                SortingMachine::checkSorting(sortedList, sortedListSize);
+                showSortingTime();
                 break;
             case 6:
                 SortingMachine::checkSorting(sortedList, sortedListSize);
                 break;
             case 7:
+                showSortingTime();
+            case 8:
                 presentationAfterSorting = !presentationAfterSorting;
             default: ;
         }
@@ -102,7 +105,9 @@ void SortingApp<T>::showMenu() {
         "3. Show actually using unsorted table.\n"
         "4. Show sorted table.\n"
         "5. Sorting menu.\n"
-        "6. Check sorting\n";
+        "6. Check sorting\n"
+        "7. Show last sorting time\n"
+        "8. Turn on/off showing table after sorting\n";
 }
 
 template <typename T>   //wyświetlenie menu sortowania
@@ -135,28 +140,27 @@ void SortingApp<T>::showQuickSortMenu() {
 template <typename T>   //wyświetlenie nieposortowanej tablicy
 void SortingApp<T>::showUnsortedTable() const {
     if (unsortedListSize == 0)
-        cout<<"Unsorted table is empty."<<endl;
+        cout<<"Unsorted table is empty.";
     else {
         cout << "Unsorted table: \n";
         for (int i = 0; i < unsortedListSize; i++) {
             cout << unsortedList[i] << " ";
         }
     }
-    cout<<"\n";
+    cout<<"\n\n";
 }
 
 template <typename T>   //wyświetlenie posortowanej tablicy
 void SortingApp<T>::showSortedTable() const {
     if (sortedListSize == 0)
-        cout<<"Sorted table is empty."<<endl;
+        cout<<"Sorted table is empty.";
     else{
         cout<<"Sorted table: \n";
         for(int i = 0; i < sortedListSize; i++) {
             cout << sortedList[i] << " ";
         }
     }
-    cout <<"\nLast sorting time: "<< lastSortingTime <<"ms\n";
-    cout<<"\n";
+    cout<<"\n\n";
 }
 
 template <typename T>   //kopiowanie tablicy nieposortowanej
@@ -165,4 +169,10 @@ void SortingApp<T>::copyUnsortedToSorted() {
     sortedListSize= unsortedListSize;
     sortedList = new T[sortedListSize];
     copy(unsortedList, unsortedList+unsortedListSize, sortedList);
+}
+
+template <typename T>   //wyświetlenie ostatniego czasu sortowania
+void SortingApp<T>::showSortingTime() const {
+    cout <<"Last sorting time: "<< lastSortingTime <<"ms\n";
+    cout<<"\n";
 }

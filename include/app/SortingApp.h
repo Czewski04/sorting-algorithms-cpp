@@ -8,9 +8,9 @@ public:             //utworzenie struktury aplikacji
     [[noreturn]] void runApp();
 private:
     int userChoice = 0;
-    long long lastSortingTime = 0;
-    T*unsortedList = nullptr;
-    T*sortedList = nullptr;
+    double lastSortingTime = 0;
+    T* unsortedList = nullptr;
+    T* sortedList = nullptr;
     int sortedListSize=0;
     int unsortedListSize = 0;
     bool presentationAfterSorting = true;
@@ -18,6 +18,7 @@ private:
     void getUserChoice();
     void showUnsortedTable() const;
     void showSortedTable() const;
+    void showSortingTime() const;
     void copyUnsortedToSorted();
 
     static void showMenu();
