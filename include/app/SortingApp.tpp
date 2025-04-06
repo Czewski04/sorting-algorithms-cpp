@@ -12,23 +12,23 @@ template <typename T>   //funckja zarządzająca menu aplikacji
         getUserChoice();
         switch (userChoice) {
             case 1:
-                FileReader::readFile(unsortedList, listSize);
+                FileReader::readFile(unsortedList, unsortedListSize);
                 break;
             case 2:
                 showGenerationMenu();
                 getUserChoice();
                 switch (userChoice) {
                     case 1:
-                        NumbersGenerator::generateNumbers(unsortedList, 0, listSize);
+                        NumbersGenerator::generateNumbers(unsortedList, 0, unsortedListSize);
                         break;
                     case 2:
-                        NumbersGenerator::generateNumbers(unsortedList, 33, listSize);
+                        NumbersGenerator::generateNumbers(unsortedList, 33, unsortedListSize);
                         break;
                     case 3:
-                        NumbersGenerator::generateNumbers(unsortedList, 66,listSize);
+                        NumbersGenerator::generateNumbers(unsortedList, 66,unsortedListSize);
                         break;
                     case 4:
-                        NumbersGenerator::generateNumbers(unsortedList, -100,listSize);
+                        NumbersGenerator::generateNumbers(unsortedList, -100,unsortedListSize);
                         break;
                     default: ;
                 }
@@ -45,31 +45,26 @@ template <typename T>   //funckja zarządzająca menu aplikacji
                 getUserChoice();
                 switch (userChoice) {
                     case 1:
-                        lastSortingTime = SortingMachine::insertionSort(sortedList, listSize);
-                        showUnsortedTable();
-                        showSortedTable();
-                        std::cout <<"\nSorting time: "<< lastSortingTime <<"ms\n";
+                        lastSortingTime = SortingMachine::insertionSort(sortedList, sortedListSize);
                         break;
                     case 2:
                         showQuickSortMenu();
                         getUserChoice();
                         switch (userChoice) {
                             case 1:
-                                lastSortingTime = SortingMachine::quickSort(sortedList,1, listSize);
+                                lastSortingTime = SortingMachine::quickSort(sortedList,1, sortedListSize);
                                 break;
                             case 2:
-                                lastSortingTime = SortingMachine::quickSort(sortedList,2, listSize);
+                                lastSortingTime = SortingMachine::quickSort(sortedList,2, sortedListSize);
                                 break;
                             case 3:
-                                lastSortingTime = SortingMachine::quickSort(sortedList,3, listSize);
+                                lastSortingTime = SortingMachine::quickSort(sortedList,3, sortedListSize);
                                 break;
                             case 4:
-                                lastSortingTime = SortingMachine::quickSort(sortedList,4, listSize);
+                                lastSortingTime = SortingMachine::quickSort(sortedList,4, sortedListSize);
                                 break;
                             default:;
                         }
-                        showUnsortedTable();
-                        showSortedTable();
                         break;
                     case 3:
                         break;
@@ -79,10 +74,17 @@ template <typename T>   //funckja zarządzająca menu aplikacji
                         break;
                     default: ;
                 }
+                if(presentationAfterSorting){
+                    showUnsortedTable();
+                    showSortedTable();
+                    SortingMachine::checkSorting(sortedList, sortedListSize);
+                }
                 break;
             case 6:
-                SortingMachine::checkSorting(sortedList, listSize);
+                SortingMachine::checkSorting(sortedList, sortedListSize);
                 break;
+            case 7:
+                presentationAfterSorting = !presentationAfterSorting;
             default: ;
         }
     }
@@ -132,33 +134,35 @@ void SortingApp<T>::showQuickSortMenu() {
 
 template <typename T>   //wyświetlenie nieposortowanej tablicy
 void SortingApp<T>::showUnsortedTable() const {
-    if (listSize == 0)
+    if (unsortedListSize == 0)
         cout<<"Unsorted table is empty."<<endl;
-    else
-        cout<<"Unsorted table: \n";
-    for(int i=0; i<listSize; i++){
-        cout<<unsortedList[i]<<"\n";
+    else {
+        cout << "Unsorted table: \n";
+        for (int i = 0; i < unsortedListSize; i++) {
+            cout << unsortedList[i] << " ";
+        }
     }
     cout<<"\n";
 }
 
 template <typename T>   //wyświetlenie posortowanej tablicy
 void SortingApp<T>::showSortedTable() const {
-    if (listSize == 0)
+    if (sortedListSize == 0)
         cout<<"Sorted table is empty."<<endl;
-    else
+    else{
         cout<<"Sorted table: \n";
-    for(int i = 0; i < listSize; i++) {
-        cout << sortedList[i] << "\n";
+        for(int i = 0; i < sortedListSize; i++) {
+            cout << sortedList[i] << " ";
+        }
     }
     cout <<"\nLast sorting time: "<< lastSortingTime <<"ms\n";
     cout<<"\n";
-
 }
 
 template <typename T>   //kopiowanie tablicy nieposortowanej
 void SortingApp<T>::copyUnsortedToSorted() {
     delete[] sortedList;
-    sortedList = new T[listSize];
-    copy(unsortedList, unsortedList+listSize, sortedList);
+    sortedListSize= unsortedListSize;
+    sortedList = new T[sortedListSize];
+    copy(unsortedList, unsortedList+unsortedListSize, sortedList);
 }

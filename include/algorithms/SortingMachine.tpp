@@ -7,7 +7,7 @@
 #include <random>
 
 template<typename T> //implementacja algorytmu sortowania przez wstawiania
-long long SortingMachine::insertionSort(T*& sortedList, int arraySize) {
+long long SortingMachine::insertionSort(T* sortedList, int arraySize) {
     int j=0;
     auto start = std::chrono::high_resolution_clock::now();
 
@@ -28,7 +28,7 @@ long long SortingMachine::insertionSort(T*& sortedList, int arraySize) {
 }
 
 template<typename T> //funkcja sterująca sortowaniem szybkim
-long long SortingMachine::quickSort(T*& sortedList, int pivotPosition, int arraySize) {
+long long SortingMachine::quickSort(T* sortedList, int pivotPosition, int arraySize) {
     auto start = std::chrono::high_resolution_clock::now();
 
     quickSortImplementation(sortedList, 0, arraySize-1, pivotPosition);
@@ -39,28 +39,8 @@ long long SortingMachine::quickSort(T*& sortedList, int pivotPosition, int array
     return duration.count();
 }
 
-template<typename T> //funkcja testująca poprawność sortowania
-void SortingMachine::checkSorting(T*& sortedList, int arraySize) {
-    bool isSorted = true;
-    if (arraySize == 0) {
-        std::cout << "Empty sorted list.\n\n";
-        return;
-    }
-    for (int i=1; i<arraySize; i++) {
-        if (sortedList[i] < sortedList[i-1]) {
-            isSorted = false;
-        }
-    }
-    if (isSorted == true) {
-        std::cout << "Table is sorted correctly!\n";
-    }
-    else
-        std::cout << "Table is not sorted correctly!\n";
-    std::cout<<"\n";
-}
-
 template<typename T> //implementacja algorytmu sortowania szybkiego
-void SortingMachine::quickSortImplementation(T *&sortedList, int begin, int end, int pivotPosition) {
+void SortingMachine::quickSortImplementation(T* sortedList, int begin, int end, int pivotPosition) {
     if (begin >= end) return;
     T pivot=0;              //wybór pivota
     if (pivotPosition==1) {
@@ -104,6 +84,25 @@ void SortingMachine::quickSortImplementation(T *&sortedList, int begin, int end,
     quickSortImplementation(sortedList, left+1, end, pivotPosition); // right array
 }
 
+template<typename T> //funkcja testująca poprawność sortowania
+void SortingMachine::checkSorting(T* sortedList, int arraySize) {
+    bool isSorted = true;
+    if (arraySize == 0) {
+        std::cout << "Empty sorted list.\n\n";
+        return;
+    }
+    for (int i=1; i<arraySize; i++) {
+        if (sortedList[i] < sortedList[i-1]) {
+            isSorted = false;
+        }
+    }
+    if (isSorted == true) {
+        std::cout << "Table is sorted correctly!\n";
+    }
+    else
+        std::cout << "Table is not sorted correctly!\n";
+    std::cout<<"\n";
+}
 
 
 

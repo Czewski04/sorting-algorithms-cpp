@@ -11,7 +11,9 @@ private:
     long long lastSortingTime = 0;
     T*unsortedList = nullptr;
     T*sortedList = nullptr;
-    int listSize=0;
+    int sortedListSize=0;
+    int unsortedListSize = 0;
+    bool presentationAfterSorting = true;
 
     void getUserChoice();
     void showUnsortedTable() const;
