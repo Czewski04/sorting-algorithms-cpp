@@ -1,3 +1,5 @@
+#include <algorithm>
+
 #include "FileReader.h"
 #include <fstream>
 #include <iostream>
@@ -31,6 +33,34 @@ void FileReader::readFile(T*& unsortedList, int& arraySize) {
     }
 
     cout << "All numbers ("<<arraySize <<") added successfully.\n \n";
+}
+
+
+void FileReader::saveToCSV(std::vector<double> results, string filename) {
+    std::ofstream file;
+    string doubleTxt = "";
+
+    bool fileExists = std::filesystem::exists(filename);
+
+    file.open(filename, std::ios::app);
+
+    if (!file.is_open()) {
+        throw std::runtime_error("Nie można otworzyć pliku: " + filename);
+    }
+
+    if (!fileExists) {
+        file << "Insert; QS pivot left; QS pivot right; QS pivot middle; QS pivot random; Heap; ShellBasic; ShellKnuth;\n";
+    }
+
+    for (double result:results) {
+        doubleTxt = to_string(result);
+        std::replace(doubleTxt.begin(), doubleTxt.end(), '.', ',');
+        file << doubleTxt << "; ";
+    }
+
+    file << "\n";
+
+    file.close();
 }
 
 string FileReader::askForFilename() {   //funkcja wczytująca ścierzkę do pliku

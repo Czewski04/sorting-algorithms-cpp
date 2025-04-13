@@ -12,6 +12,7 @@ public:   //struktura klasy wczytującej plik
 
   template<typename T>
   static void readFile(T*& unsortedList, int& arraySize);
+  static void saveToCSV(std::vector<double> result, string filename);
 };
 
 #include "FileReader.tpp"

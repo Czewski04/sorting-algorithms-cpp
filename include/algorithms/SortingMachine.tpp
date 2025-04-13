@@ -83,6 +83,99 @@ void SortingMachine::quickSortImplementation(T* sortedList, int begin, int end, 
     quickSortImplementation(sortedList, left+1, end, pivotPosition); // right array
 }
 
+template<typename T>
+double SortingMachine::heapSort(T *sortedList, int arraySize) {
+    auto start = std::chrono::high_resolution_clock::now();
+
+    // Budowanie kopca max-heap
+    for (int i = arraySize / 2 - 1; i >= 0; i--)
+        heapify(sortedList, arraySize, i);
+
+    // Wyciąganie elementów z kopca jeden po drugim
+    for (int i = arraySize - 1; i > 0; i--) {
+        std::swap(sortedList[0], sortedList[i]);           // Zamień korzeń z ostatnim elementem
+        heapify(sortedList, i, 0);                  // Zheapuj zmniejszoną tablicę
+    }
+
+    auto end = std::chrono::high_resolution_clock::now();
+    auto duration = std::chrono::duration<double, std::milli>(end - start);
+
+    return duration.count();
+}
+
+template<typename T>
+void SortingMachine::heapify(T* sortedList, int arraySize, int rootIndex) {
+    int largest = rootIndex;
+    int left = 2 * rootIndex + 1;
+    int right = 2 * rootIndex + 2;
+
+    // Sprawdź, czy lewe dziecko jest większe od korzenia
+    if (left < arraySize && sortedList[left] > sortedList[largest])
+        largest = left;
+
+    // Sprawdź, czy prawe dziecko jest większe od największego dotychczas
+    if (right < arraySize && sortedList[right] > sortedList[largest])
+        largest = right;
+
+    // Jeśli największy nie jest korzeniem – zamień i rekurencyjnie zheapuj
+    if (largest != rootIndex) {
+        std::swap(sortedList[rootIndex], sortedList[largest]);
+        heapify(sortedList, arraySize, largest);
+    }
+}
+
+template<typename T>
+double SortingMachine::shellSortBasic(T *sortedList, int arraySize) {
+    auto start = std::chrono::high_resolution_clock::now();
+
+    int gap = arraySize / 2;
+    while (gap>0) {
+        for (int i = gap; i < arraySize; i++) {
+            T temp = sortedList[i];
+            int j;
+            for (j = i; j >= gap && sortedList[j - gap] > temp; j -= gap) {
+                sortedList[j] = sortedList[j - gap];
+            }
+            sortedList[j] = temp;
+        }
+        gap /= 2;
+    }
+
+    auto end = std::chrono::high_resolution_clock::now();
+    auto duration = std::chrono::duration<double, std::milli>(end - start);
+
+    return duration.count();
+}
+
+template<typename T>
+double SortingMachine::shellSortKnuth(T *sortedList, int arraySize) {
+    auto start = std::chrono::high_resolution_clock::now();
+
+    int gap = 1;
+    while (gap < arraySize/3) {
+        gap  = 3 * gap +1;
+    }
+
+    while (gap>0) {
+        for (int i = gap; i < arraySize; i++) {
+            T temp = sortedList[i];
+            int j;
+            for (j = i; j >= gap && sortedList[j - gap] > temp; j -= gap) {
+                sortedList[j] = sortedList[j - gap];
+            }
+            sortedList[j] = temp;
+        }
+        gap = (gap-1)/3;
+    }
+
+    auto end = std::chrono::high_resolution_clock::now();
+    auto duration = std::chrono::duration<double, std::milli>(end - start);
+
+    return duration.count();
+}
+
+
+
 template<typename T> //funkcja testująca poprawność sortowania
 void SortingMachine::checkSorting(T* sortedList, int arraySize) {
     bool isSorted = true;

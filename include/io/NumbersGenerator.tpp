@@ -14,11 +14,12 @@ int NumbersGenerator::askForArraySize(){        //wczytywanie rozmiaru tablicy o
 }
 
 template <typename T>       //funkcja sterująca generowaniem liczb
-void NumbersGenerator::generateNumbers(T*& unsortedList, int presortedPercentage, int& arraySize){
+void NumbersGenerator::generateNumbers(T*& unsortedList, int presortedPercentage, int& arraySize, bool askForNumbers){
     delete[] unsortedList;
-    arraySize = askForArraySize();
-    unsortedList = new T[arraySize];
+    if (askForNumbers)
+        arraySize = askForArraySize();
 
+    unsortedList = new T[arraySize];
     if(is_same<T, int>::value){
         generateIntNumbers(unsortedList, presortedPercentage, arraySize);
     }
@@ -35,6 +36,12 @@ void NumbersGenerator::generateIntNumbers(T*& unsortedList, int presortedPercent
     if (presortedPercentage == -100) {
         for (int i=0; i < arraySize; i++) {
             unsortedList[i]=arraySize-i;
+        }
+        return;
+    }
+    if (presortedPercentage == 100) {
+        for (int i=0; i < arraySize; i++) {
+            unsortedList[i]=i;
         }
         return;
     }

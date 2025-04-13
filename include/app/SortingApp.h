@@ -20,11 +20,14 @@ private:
     void showSortedTable() const;
     void showSortingTime() const;
     void copyUnsortedToSorted();
+    void turnOnOffPresentation();
+    void sortingAutomation();
 
     static void showMenu();
     static void showSortingMenu();
     static void showGenerationMenu();
     static void showQuickSortMenu();
+    static void showShellSortMenu();
 };
 
 #include "SortingApp.tpp"

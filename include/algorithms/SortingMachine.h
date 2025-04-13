@@ -10,10 +10,14 @@ public:
     static void quickSortImplementation(T* sortedList, int begin , int end, int pivotPosition);
     template<typename T>
     static double insertionSort(T* sortedList, int arraySize);
-//    template<typename T>
-//    static double heapSort(T* sortedList, int arraySize);
-//    template<typename T>
-//    static double shellSort(T* sortedList, int arraySize);
+    template<typename T>
+    static double heapSort(T* sortedList, int arraySize);
+    template<typename T>
+    static void heapify(T* sortedList, int arraySize, int rootIndex);
+    template<typename T>
+    static double shellSortBasic(T* sortedList, int arraySize);
+    template<typename T>
+    static double shellSortKnuth(T* sortedList, int arraySize);
     template<typename T>
     static void checkSorting(T* sortedList, int arraySize);
 };

@@ -6,7 +6,7 @@
 class NumbersGenerator {
 public:     // struktura klasy generującej dane
     template<typename T>
-    static void generateNumbers(T*& unsortedList, int presortedPercentage, int& arraySize);
+    static void generateNumbers(T*& unsortedList, int presortedPercentage, int& arraySize, bool askForNumbers=true);
 
     template<typename T>
     static void generateFloatNumbers(T*& unsortedList, int presortedPercentage, int arraySize);

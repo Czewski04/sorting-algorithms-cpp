@@ -4,6 +4,7 @@
 #include "SortingMachine.h"
 #include <iostream>
 #include <algorithm>
+#include <vector>
 
 template <typename T>   //funckja zarządzająca menu aplikacji
 [[noreturn]] void SortingApp<T>::runApp() {
@@ -30,6 +31,8 @@ template <typename T>   //funckja zarządzająca menu aplikacji
                     case 4:
                         NumbersGenerator::generateNumbers(unsortedList, -100,unsortedListSize);
                         break;
+                    case 5:
+                        NumbersGenerator::generateNumbers(unsortedList, 100,unsortedListSize);
                     default: ;
                 }
                 break;
@@ -67,8 +70,20 @@ template <typename T>   //funckja zarządzająca menu aplikacji
                         }
                         break;
                     case 3:
+                        lastSortingTime = SortingMachine::heapSort(sortedList, sortedListSize);
                         break;
                     case 4:
+                        showShellSortMenu();
+                        getUserChoice();
+                        switch (userChoice) {
+                            case 1:
+                                lastSortingTime = SortingMachine::shellSortBasic(sortedList, sortedListSize);
+                                break;
+                            case 2:
+                                lastSortingTime = SortingMachine::shellSortKnuth(sortedList, sortedListSize);
+                                break;
+                            default:;
+                        }
                         break;
                     case 0:
                         break;
@@ -86,8 +101,13 @@ template <typename T>   //funckja zarządzająca menu aplikacji
                 break;
             case 7:
                 showSortingTime();
+                break;
             case 8:
-                presentationAfterSorting = !presentationAfterSorting;
+                turnOnOffPresentation();
+                break;
+            case 9:
+                sortingAutomation();
+                break;
             default: ;
         }
     }
@@ -105,9 +125,10 @@ void SortingApp<T>::showMenu() {
         "3. Show actually using unsorted table.\n"
         "4. Show sorted table.\n"
         "5. Sorting menu.\n"
-        "6. Check sorting\n"
+        "6. Check sorting.\n"
         "7. Show last sorting time\n"
-        "8. Turn on/off showing table after sorting\n";
+        "8. Turn on/off showing table after sorting.\n"
+        "9. Start automate sorting.\n";
 }
 
 template <typename T>   //wyświetlenie menu sortowania
@@ -125,6 +146,7 @@ void SortingApp<T>::showGenerationMenu() {
         "2. 33% array is sorted.\n"
         "3. 66% array is sorted.\n"
         "4. Array sorted descending\n"
+        "5. 100% array is sorted"
         "0. Exit\n";
 }
 
@@ -134,6 +156,13 @@ void SortingApp<T>::showQuickSortMenu() {
         "2. Pivot on the right.\n"
         "3. Pivot in the middle.\n"
         "4. Random pivot place\n"
+        "0. Exit\n";
+}
+
+template <typename T>   //wyświetlenie menu shellsorta
+void SortingApp<T>::showShellSortMenu() {
+    cout<<"1. Classic Shell sequence - Gap: N/(2^k).\n"<<
+        "2. Knuth's sequence - Gap: (3^k - 1)/2.\n"
         "0. Exit\n";
 }
 
@@ -176,3 +205,84 @@ void SortingApp<T>::showSortingTime() const {
     cout <<"Last sorting time: "<< lastSortingTime <<"ms\n";
     cout<<"\n";
 }
+
+template <typename T>
+void SortingApp<T>::turnOnOffPresentation() {
+    if (presentationAfterSorting) cout << "Presentation turned off\n";
+    else cout << "Presentation turned on\n";
+    cout<<"\n";
+    presentationAfterSorting = !presentationAfterSorting;
+}
+
+template<typename T>
+void SortingApp<T>::sortingAutomation() {
+    int iterator = 40;
+
+    std::vector<double> sortingResults;
+
+    int percentageList[] = {0,33,66,100,-100};
+    int sizesList[] = {15000,20000,25000,30000,40000,60000,80000};
+    string filenamesList[] = {
+    //     "output_Int_0Perc_15k.csv", "output_Int_0Perc_20k.csv", "output_Int_0Perc_25k.csv", "output_Int_0Perc_30k.csv", "output_Int_0Perc_40k.csv", "output_Int_0Perc_60k.csv", "output_Int_0Perc_80k.csv",
+    // "output_Int_33Perc_15k.csv", "output_Int_33Perc_20k.csv", "output_Int_33Perc_25k.csv", "output_Int_33Perc_30k.csv", "output_Int_33Perc_40k.csv", "output_Int_33Perc_60k.csv", "output_Int_33Perc_80k.csv",
+    // "output_Int_66Perc_15k.csv", "output_Int_66Perc_20k.csv", "output_Int_66Perc_25k.csv", "output_Int_66Perc_30k.csv", "output_Int_66Perc_40k.csv", "output_Int_66Perc_60k.csv", "output_Int_66Perc_80k.csv",
+    // "output_Int_inverted_Perc_15k.csv", "output_Int_inverted_Perc_20k.csv", "output_Int_inverted_Perc_25k.csv", "output_Int_inverted_Perc_30k.csv", "output_Int_inverted_Perc_40k.csv", "output_Int_inverted_Perc_60k.csv", "output_Int_inverted_Perc_80k.csv"
+    // "output_Int_100Perc_15k.csv", "output_Int_100Perc_20k.csv", "output_Int_100Perc_25k.csv", "output_Int_100Perc_30k.csv", "output_Int_100Perc_40k.csv", "output_Int_100Perc_60k.csv", "output_Int_100Perc_80k.csv"
+        // 0%
+        "output_Float_0Perc_15k.csv", "output_Float_0Perc_20k.csv", "output_Float_0Perc_25k.csv", "output_Float_0Perc_30k.csv", "output_Float_0Perc_40k.csv", "output_Float_0Perc_60k.csv", "output_Float_0Perc_80k.csv",
+        // 33%
+        "output_Float_33Perc_15k.csv", "output_Float_33Perc_20k.csv", "output_Float_33Perc_25k.csv", "output_Float_33Perc_30k.csv", "output_Float_33Perc_40k.csv", "output_Float_33Perc_60k.csv", "output_Float_33Perc_80k.csv",
+        // 66%
+        "output_Float_66Perc_15k.csv", "output_Float_66Perc_20k.csv", "output_Float_66Perc_25k.csv", "output_Float_66Perc_30k.csv", "output_Float_66Perc_40k.csv", "output_Float_66Perc_60k.csv", "output_Float_66Perc_80k.csv",
+        // 100%
+        "output_Float_100Perc_15k.csv", "output_Float_100Perc_20k.csv", "output_Float_100Perc_25k.csv", "output_Float_100Perc_30k.csv", "output_Float_100Perc_40k.csv", "output_Float_100Perc_60k.csv", "output_Float_100Perc_80k.csv",
+        // inverted (-1)
+        "output_Float_inverted_Perc_15k.csv", "output_Float_inverted_Perc_20k.csv", "output_Float_inverted_Perc_25k.csv", "output_Float_inverted_Perc_30k.csv", "output_Float_inverted_Perc_40k.csv", "output_Float_inverted_Perc_60k.csv", "output_Float_inverted_Perc_80k.csv"
+    };
+    for (int p = 0; p < std::size(percentageList); p++) {
+        for (int s = 0; s < std::size(sizesList); s++) {
+            unsortedListSize = sizesList[s];
+            for (int i = 0; i < iterator; i++) {
+                sortingResults.clear();
+                std::cout<<i<<". "<<percentageList[p]<<", "<<sizesList[s]<<"\n";
+                NumbersGenerator::generateNumbers(unsortedList, percentageList[p], unsortedListSize, false);
+
+                copyUnsortedToSorted();
+                lastSortingTime = SortingMachine::insertionSort(sortedList, sortedListSize);
+                sortingResults.push_back(lastSortingTime);
+
+                copyUnsortedToSorted();
+                lastSortingTime = SortingMachine::quickSort(sortedList,1, sortedListSize);
+                sortingResults.push_back(lastSortingTime);
+
+                copyUnsortedToSorted();
+                lastSortingTime = SortingMachine::quickSort(sortedList,2, sortedListSize);
+                sortingResults.push_back(lastSortingTime);
+
+                copyUnsortedToSorted();
+                lastSortingTime = SortingMachine::quickSort(sortedList,3, sortedListSize);
+                sortingResults.push_back(lastSortingTime);
+
+                copyUnsortedToSorted();
+                lastSortingTime = SortingMachine::quickSort(sortedList,4, sortedListSize);
+                sortingResults.push_back(lastSortingTime);
+
+                copyUnsortedToSorted();
+                lastSortingTime = SortingMachine::heapSort(sortedList, sortedListSize);
+                sortingResults.push_back(lastSortingTime);
+
+                copyUnsortedToSorted();
+                lastSortingTime = SortingMachine::shellSortBasic(sortedList, sortedListSize);
+                sortingResults.push_back(lastSortingTime);
+
+                copyUnsortedToSorted();
+                lastSortingTime = SortingMachine::shellSortKnuth(sortedList, sortedListSize);
+                sortingResults.push_back(lastSortingTime);
+
+                FileReader::saveToCSV(sortingResults, filenamesList[p*std::size(sizesList)+s]);
+            }
+        }
+    }
+}
+
+
