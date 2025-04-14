@@ -146,7 +146,7 @@ void SortingApp<T>::showGenerationMenu() {
         "2. 33% array is sorted.\n"
         "3. 66% array is sorted.\n"
         "4. Array sorted descending\n"
-        "5. 100% array is sorted"
+        "5. 100% array is sorted\n"
         "0. Exit\n";
 }
 
