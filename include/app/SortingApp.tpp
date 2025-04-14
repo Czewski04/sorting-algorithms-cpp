@@ -206,7 +206,7 @@ void SortingApp<T>::showSortingTime() const {
     cout<<"\n";
 }
 
-template <typename T>
+template <typename T>    //włączanie/wyłączanie prezentacji posortowanych danych
 void SortingApp<T>::turnOnOffPresentation() {
     if (presentationAfterSorting) cout << "Presentation turned off\n";
     else cout << "Presentation turned on\n";
@@ -214,9 +214,9 @@ void SortingApp<T>::turnOnOffPresentation() {
     presentationAfterSorting = !presentationAfterSorting;
 }
 
-template<typename T>
+template<typename T>     //funkcja pozwalająca na automatyzację generowania sortowań
 void SortingApp<T>::sortingAutomation() {
-    int iterator = 40;
+    int iterator = 100;
 
     std::vector<double> sortingResults;
 

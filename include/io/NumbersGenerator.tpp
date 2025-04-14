@@ -1,8 +1,6 @@
 #include "NumbersGenerator.h"
 #include <iostream>
-#include <vector>
 #include <random>
-#include <ranges>
 
 using namespace std;
 

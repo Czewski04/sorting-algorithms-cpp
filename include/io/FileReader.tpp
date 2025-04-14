@@ -36,7 +36,7 @@ void FileReader::readFile(T*& unsortedList, int& arraySize) {
 }
 
 
-void FileReader::saveToCSV(std::vector<double> results, string filename) {
+void FileReader::saveToCSV(std::vector<double> results, string filename) {  //funkcja zapisująca czasowe wyniki sortowań do csv
     std::ofstream file;
     string doubleTxt = "";
 

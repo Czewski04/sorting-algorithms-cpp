@@ -1,7 +1,6 @@
 #ifndef NUMBERSGENERATOR_H
 #define NUMBERSGENERATOR_H
 
-#include <vector>
 
 class NumbersGenerator {
 public:     // struktura klasy generującej dane

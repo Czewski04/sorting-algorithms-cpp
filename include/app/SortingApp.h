@@ -1,6 +1,5 @@
 #ifndef SORTINGAPP_H
 #define SORTINGAPP_H
-#include <vector>
 
 template<typename T>
 class SortingApp {

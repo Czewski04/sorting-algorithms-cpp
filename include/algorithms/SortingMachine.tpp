@@ -1,7 +1,6 @@
 #include "SortingMachine.h"
 
 #include <chrono>
-#include <vector>
 #include <iostream>
 #include <utility>
 
@@ -77,10 +76,10 @@ void SortingMachine::quickSortImplementation(T* sortedList, int begin, int end, 
         }
     }
 
-    std::swap(sortedList[left], sortedList[end]);
+    std::swap(sortedList[left], sortedList[end]);       // zamiana miejsc pivota
 
-    quickSortImplementation(sortedList, begin, left-1, pivotPosition); // left array
-    quickSortImplementation(sortedList, left+1, end, pivotPosition); // right array
+    quickSortImplementation(sortedList, begin, left-1, pivotPosition); // lewa podtablica
+    quickSortImplementation(sortedList, left+1, end, pivotPosition); // prawa podtablica
 }
 
 template<typename T>
@@ -93,8 +92,8 @@ double SortingMachine::heapSort(T *sortedList, int arraySize) {
 
     // Wyciąganie elementów z kopca jeden po drugim
     for (int i = arraySize - 1; i > 0; i--) {
-        std::swap(sortedList[0], sortedList[i]);           // Zamień korzeń z ostatnim elementem
-        heapify(sortedList, i, 0);                  // Zheapuj zmniejszoną tablicę
+        std::swap(sortedList[0], sortedList[i]);           // Zamiana korzenia z ostatnim elementem
+        heapify(sortedList, i, 0);                  // Heapowanie zmniejszonej tablicy
     }
 
     auto end = std::chrono::high_resolution_clock::now();
@@ -109,15 +108,15 @@ void SortingMachine::heapify(T* sortedList, int arraySize, int rootIndex) {
     int left = 2 * rootIndex + 1;
     int right = 2 * rootIndex + 2;
 
-    // Sprawdź, czy lewe dziecko jest większe od korzenia
+    // sprawdzanie lewego dziecka
     if (left < arraySize && sortedList[left] > sortedList[largest])
         largest = left;
 
-    // Sprawdź, czy prawe dziecko jest większe od największego dotychczas
+    // sprawdzanie prawego dziecka
     if (right < arraySize && sortedList[right] > sortedList[largest])
         largest = right;
 
-    // Jeśli największy nie jest korzeniem – zamień i rekurencyjnie zheapuj
+    // zamiana z korzeniem i heapowanie
     if (largest != rootIndex) {
         std::swap(sortedList[rootIndex], sortedList[largest]);
         heapify(sortedList, arraySize, largest);
@@ -128,7 +127,7 @@ template<typename T>
 double SortingMachine::shellSortBasic(T *sortedList, int arraySize) {
     auto start = std::chrono::high_resolution_clock::now();
 
-    int gap = arraySize / 2;
+    int gap = arraySize / 2;    //obliczanie największego odstępu
     while (gap>0) {
         for (int i = gap; i < arraySize; i++) {
             T temp = sortedList[i];
@@ -138,7 +137,7 @@ double SortingMachine::shellSortBasic(T *sortedList, int arraySize) {
             }
             sortedList[j] = temp;
         }
-        gap /= 2;
+        gap /= 2; // obliczanie odstępów
     }
 
     auto end = std::chrono::high_resolution_clock::now();
@@ -152,7 +151,7 @@ double SortingMachine::shellSortKnuth(T *sortedList, int arraySize) {
     auto start = std::chrono::high_resolution_clock::now();
 
     int gap = 1;
-    while (gap < arraySize/3) {
+    while (gap < arraySize/3) { //obliczanie największego odstępu
         gap  = 3 * gap +1;
     }
 
@@ -165,7 +164,7 @@ double SortingMachine::shellSortKnuth(T *sortedList, int arraySize) {
             }
             sortedList[j] = temp;
         }
-        gap = (gap-1)/3;
+        gap = (gap-1)/3;    //obliczanie odstępów
     }
 
     auto end = std::chrono::high_resolution_clock::now();
