@@ -64,7 +64,8 @@ void FileReader::saveToCSV(std::vector<double> results, string filename) {  //fu
 }
 
 string FileReader::askForFilename() {   //funkcja wczytująca ścierzkę do pliku
-    cout << "Please enter the file name: \n";
+    cout << "!!! The file should be in the same folder as the .exe file !!! (for version running from exe\n)"
+            "Please enter the file name: \n";
     string fileName;
     cin >> fileName;
     return fileName;
